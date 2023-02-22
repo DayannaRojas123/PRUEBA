@@ -1,0 +1,66 @@
+* {
+	padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	font-family: carossoft;
+
+}
+
+
+html {
+	height: 100%;
+	width: 100%;
+
+}
+
+#body {
+	height: 100%;
+
+
+	display: grid;
+	grid-template-areas:
+
+		" nav header "
+		" nav main "
+		" footer footer "
+
+	;
+	grid-template-columns: max-content;
+	grid-template-rows: max-content;
+
+	gap: 10px;
+
+}
+
+#nav {
+
+	background-color: coral;
+
+	grid-area: nav;
+
+
+}
+
+#main {
+	background-color: burlywood;
+	grid-area: main;
+}
+
+
+#footer {
+	background-color: aquamarine;
+
+	grid-area: footer;
+}
+
+#header {
+	background-color: aqua;
+
+	grid-area: header;
+}
+
+#inicio,
+#clientes,
+#creditos {
+	position: absolute;
+}

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>calculadora 4000</title>
+      <meta name="author" content="Talento coex DR">
+      <meta name="description" content="diseño web con coex">
+      <meta name="keywords" content="aprende logica, html, css, javascript, bd, vue.js, laravel"/>
+      <title>DAYANNA ROJAS</title>
+      <link rel="stylesheet" href="./style.css">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+   </head>
+   <body id="body">
+      <header id="header">
+         <h1 id="titulo">INICIO</h1>
+      </header>
+      <nav id="nav">
+         <h4>holaaaaaaaaaaaaaaaa</h4>
+         <ul class="list-group">
+            <li class="list-group-item" onclick="vistainicio()">inicio</li>
+            <li class="list-group-item" onclick="vistaclientes()">clientes</li>
+            <li class="list-group-item" onclick="vistacreditos()">credito</li>
+         </ul>
+      </nav>
+      <main id="main">
+         <div class="container" id="inicio" >
+            <div class="row">
+               <div class="col-sm">
+                  <h3>CREDITOS</h3>
+               </div>
+               <div class="col-sm">
+                  <h3>NUMERO DE CLIENTES</h3>
+                  <h2 id="numeroclientes">0</h2>
+               </div>
+            </div>
+         </div>
+         <div class="container" id="clientes" style="visibility: hidden;">
+            <div class="row">
+               <div class="col-sm">
+                  <form>
+                     <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <div class="input-group-btn">
+                           <button class="btn btn-primary" type="submit">
+                           <i class="bi bi-search"></i>
+                           </button>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+               <div class="col-sm">
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalcliente" >Crear cliente</button>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-sm">
+                  <table class="table">
+                     <thead>
+                        <tr>
+                           <th scope="col">Nombre</th>
+                           <th scope="col">Apellidos</th>
+                           <th scope="col">NIT/CC</th>
+                           <th scope="col">DIRECCION</th>
+                           <th scope="col">CIUDAD</th>
+                           <th scope="col">TELEFONO</th>
+                           <th scope="col">CUPO DISPONIBLE</th>
+                           <th scope="col">ESTADO</th>
+                           <th scope="col">ACCIONES</th>
+                        </tr>
+                     </thead>
+                     <tbody id="tbody">
+                     </tbody>
+                  </table>
+               </div>
+               <div class="row">
+                  <div class="col-sm">
+                     <!-- Modal -->
+                     <div class="modal fade" id="modalcliente" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <h2 class="modal-title fs-3" id="staticBackdropLabel">Crear nuevo cliente</h2>
+                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                 <h4>Datos personales:</h4>
+                                 <div class="row">
+                                    <div class="col-sm">
+                                       <form>
+                                          <div class="form-group">
+                                             <label for="nombre">Nombres</label>
+                                             <input type="text" class="form-control" id="nombre" placeholder="Nombres" required>
+                                          </div>
+                                          <div class="form-group">
+                                             <label for="nit">NIT/CC:</label>
+                                             <input type="text" class="form-control" id="nit" placeholder="NIT/CC" required>
+                                          </div>
+                                          <div class="form-group">
+                                             <label for="sel1">Ciudad:</label>
+                                             <select class="form-control" id="sel1" >
+                                                <option selected>Seleccionar...</option>
+                                                <option value="San Andres" id="option1">San Andres</option>
+                                                <option value="Cartagena" id="option2">Cartagena</option>
+                                                <option value="Medellin" id="option3">Medellin</option>
+                                                <option value="Pasto" id="option4">Pasto</option>
+                                                <option value="Giron" id="option5">Giron</option>
+                                             </select>
+                                          </div>
+                                          <div class="form-group">
+                                             <label for="contacto">Contacto:</label>
+                                             <input type="text" class="form-control" id="contacto" placeholder="Contacto">
+                                          </div>
+                                       </form>
+                                    </div>
+                                    <div class="col-sm">
+                                       <div class="form-group">
+                                          <label for="apellido">Apellidos</label>
+                                          <input type="text" class="form-control" id="apellido" placeholder="Apellidos" required>
+                                       </div>
+                                       <div class="form-group">
+                                          <label for="direccion">Direccion</label>
+                                          <input type="text" class="form-control" id="direccion" placeholder="Direccion" required>
+                                       </div>
+                                       <div class="form-group">
+                                          <label for="telefono">Telefono</label>
+                                          <input type="text" class="form-control" id="telefono" placeholder="Telefono" required>
+                                       </div>
+                                    </div>
+                                    <div class="col-sm">
+                                       <div class="form-group">
+                                          <label for="cupototal">Cupo total</label>
+                                          <input type="text" class="form-control" id="cupototal" placeholder="Cupo total" required>
+                                       </div>
+                                       <div class="form-group">
+                                          <label for="cupodisponible">Cupo disponible</label>
+                                          <input type="text" class="form-control" id="cupodisponible" placeholder="Cupo disponible">
+                                       </div>
+                                       <div class="form-group">
+                                          <label for="usr">Dias de gracia</label>
+                                          <input type="text" class="form-control" id="usr" placeholder="Dias de gracia">
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="modal-footer">
+                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
+                                 <button type="button" class="btn btn-primary" onclick="agregarcliente()">Guardar cambios</button>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="container" id="creditos" style="visibility: hidden;">
+         <div class="row">
+            <div class="col-sm">
+               <div class="form-group">
+                  <label for="cupototal">Pagare Nro.</label>
+                  <input type="text" class="form-control" id="cupototal" placeholder="Numero de pagare" required>
+               </div>
+               <div class="form-group">
+                  <label for="cupodisponible">Cuotas mensuales</label>
+                  <input type="text" class="form-control" id="cupodisponible" placeholder="Cuotas">
+               </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-sm">
+               <div class="form-group">
+                  <label for="cupodisponible">monto del credito/label>
+                  <input type="text" class="form-control" id="cupodisponible" placeholder="Cantidad" required>
+               </div>
+            </div>
+         </div>
+      </main>
+      <footer>
+         <p  id="footer">
+            Desarollado por: &copy Dayanna Valentina Rojas Rey
+         </p>
+      </footer>
+      <script src="./main.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+   </body>
+</html>
