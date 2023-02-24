@@ -4,7 +4,7 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>calculadora 4000</title>
+      <title>webpage</title>
       <meta name="author" content="Talento coex DR">
       <meta name="description" content="diseño web con coex">
       <meta name="keywords" content="aprende logica, html, css, javascript, bd, vue.js, laravel"/>
@@ -18,11 +18,12 @@
          <h1 id="titulo">INICIO</h1>
       </header>
       <nav id="nav">
-         <h4>holaaaaaaaaaaaaaaaa</h4>
+         <h4>admin</h4>
+         <i class="bi bi-person-circle"></i>
          <ul class="list-group">
-            <li class="list-group-item" onclick="vistainicio()">inicio</li>
-            <li class="list-group-item" onclick="vistaclientes()">clientes</li>
-            <li class="list-group-item" onclick="vistacreditos()">credito</li>
+            <li class="list-group-item" onclick="vistainicio()"><i class="bi bi-house-heart"></i>inicio</li>
+            <li class="list-group-item" onclick="vistaclientes()"><i class="bi bi-people"></i>clientes</li>
+            <li class="list-group-item" onclick="vistacreditos()"><i class="bi bi-currency-exchange"></i>credito</li>
          </ul>
       </nav>
       <main id="main">
@@ -30,21 +31,22 @@
             <div class="row">
                <div class="col-sm">
                   <h3>CREDITOS</h3>
+                  <h2 id="numerocreditos"> <i class="bi bi-credit-card-2-back-fill"></i> 0</h2>
                </div>
                <div class="col-sm">
                   <h3>NUMERO DE CLIENTES</h3>
-                  <h2 id="numeroclientes">0</h2>
+                  <h2 id="numeroclientes"><i class="bi bi-person-vcard"></i>0</h2>
                </div>
             </div>
          </div>
-         <div class="container" id="clientes" style="visibility: hidden;">
+         <div class="container" id="clientes" style="display: none;">
             <div class="row">
                <div class="col-sm">
                   <form>
                      <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input type="text" class="form-control" id="lupa1" placeholder="Nombre, NIT o CC">
                         <div class="input-group-btn">
-                           <button class="btn btn-primary" type="submit">
+                           <button class="btn btn-primary" type="submit" disabled >
                            <i class="bi bi-search"></i>
                            </button>
                         </div>
@@ -57,7 +59,7 @@
             </div>
             <div class="row">
                <div class="col-sm">
-                  <table class="table">
+                  <table class="table" id="tablaclientes">
                      <thead>
                         <tr>
                            <th scope="col">Nombre</th>
@@ -87,67 +89,102 @@
                               </div>
                               <div class="modal-body">
                                  <h4>Datos personales:</h4>
-                                 <div class="row">
-                                    <div class="col-sm">
-                                       <form>
-                                          <div class="form-group">
-                                             <label for="nombre">Nombres</label>
-                                             <input type="text" class="form-control" id="nombre" placeholder="Nombres" required>
-                                          </div>
-                                          <div class="form-group">
-                                             <label for="nit">NIT/CC:</label>
-                                             <input type="text" class="form-control" id="nit" placeholder="NIT/CC" required>
-                                          </div>
-                                          <div class="form-group">
-                                             <label for="sel1">Ciudad:</label>
-                                             <select class="form-control" id="sel1" >
-                                                <option selected>Seleccionar...</option>
-                                                <option value="San Andres" id="option1">San Andres</option>
-                                                <option value="Cartagena" id="option2">Cartagena</option>
-                                                <option value="Medellin" id="option3">Medellin</option>
-                                                <option value="Pasto" id="option4">Pasto</option>
-                                                <option value="Giron" id="option5">Giron</option>
-                                             </select>
-                                          </div>
-                                          <div class="form-group">
-                                             <label for="contacto">Contacto:</label>
-                                             <input type="text" class="form-control" id="contacto" placeholder="Contacto">
-                                          </div>
-                                       </form>
-                                    </div>
-                                    <div class="col-sm">
-                                       <div class="form-group">
-                                          <label for="apellido">Apellidos</label>
+                                 <form onsubmit="agregarcliente()">
+                                    <div class="row">
+                                       <div class="col-sm">
+                                          <label for="nombre" class="form-label">Nombres</label>
+                                          <input type="text" class="form-control" id="nombre" placeholder="Nombres" required>
+                                          <label for="nit" class="form-label">NIT/CC:</label>
+                                          <input type="text" class="form-control" id="nit" placeholder="NIT/CC" required>
+                                          <label for="sel1" class="form-label">Ciudad:</label>
+                                          <select class="form-control" id="sel1" required>
+                                             <option selected disabled value="">Seleccionar...</option>
+                                             <option value="San Andres" id="option1">San Andres</option>
+                                             <option value="Cartagena" id="option2">Cartagena</option>
+                                             <option value="Medellin" id="option3">Medellin</option>
+                                             <option value="Pasto" id="option4">Pasto</option>
+                                             <option value="Giron" id="option5">Giron</option>
+                                          </select>
+                                          <label for="contacto" class="form-label">Contacto:</label>
+                                          <input type="text" class="form-control" id="contacto" placeholder="Contacto">
+                                       </div>
+                                       <div class="col-sm">
+                                          <label for="apellido" class="form-label">Apellidos</label>
                                           <input type="text" class="form-control" id="apellido" placeholder="Apellidos" required>
-                                       </div>
-                                       <div class="form-group">
-                                          <label for="direccion">Direccion</label>
+                                          <label for="direccion" class="form-label">Direccion</label>
                                           <input type="text" class="form-control" id="direccion" placeholder="Direccion" required>
-                                       </div>
-                                       <div class="form-group">
-                                          <label for="telefono">Telefono</label>
+                                          <label for="telefono" class="form-label">Telefono</label>
                                           <input type="text" class="form-control" id="telefono" placeholder="Telefono" required>
                                        </div>
-                                    </div>
-                                    <div class="col-sm">
-                                       <div class="form-group">
-                                          <label for="cupototal">Cupo total</label>
+                                       <div class="col-sm">
+                                          <label for="cupototal" class="form-label">Cupo total</label>
                                           <input type="text" class="form-control" id="cupototal" placeholder="Cupo total" required>
-                                       </div>
-                                       <div class="form-group">
-                                          <label for="cupodisponible">Cupo disponible</label>
+                                          <label for="cupodisponible" class="form-label">Cupo disponible</label>
                                           <input type="text" class="form-control" id="cupodisponible" placeholder="Cupo disponible">
+                                          <label for="gracia" class="form-label">Dias de gracia</label>
+                                          <input type="text" class="form-control" id="gracia" placeholder="Dias de gracia">
                                        </div>
-                                       <div class="form-group">
-                                          <label for="usr">Dias de gracia</label>
-                                          <input type="text" class="form-control" id="usr" placeholder="Dias de gracia">
+                                       <div class="modal-footer">
+                                          <button class="btn btn-primary" type="submit" id="guardar">Guardar cambios</button>
                                        </div>
                                     </div>
-                                 </div>
+                                 </form>
                               </div>
-                              <div class="modal-footer">
-                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
-                                 <button type="button" class="btn btn-primary" onclick="agregarcliente()">Guardar cambios</button>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Modal -->
+                     <div class="modal fade" id="modaldetalles" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Detalles del cliente</h1>
+                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                 <form onsubmit="editarcliente()">
+                                    <div class="row">
+                                       <div class="col-sm">
+                                          <label for="nombredt" class="form-label">Nombres</label>
+                                          <input type="text" class="form-control" id="nombredt" placeholder="Nombres" required>
+                                          <label for="nitdt" class="form-label">NIT/CC:</label>
+                                          <input type="text" class="form-control" id="nitdt" placeholder="NIT/CC" required>
+                                          <label for="sel1dt" class="form-label">Ciudad:</label>
+                                          <select class="form-control" id="sel1dt" required>
+                                             <option selected disabled value="">Seleccionar...</option>
+                                             <option value="San Andres" id="option1">San Andres</option>
+                                             <option value="Cartagena" id="option2">Cartagena</option>
+                                             <option value="Medellin" id="option3">Medellin</option>
+                                             <option value="Pasto" id="option4">Pasto</option>
+                                             <option value="Giron" id="option5">Giron</option>
+                                          </select>
+                                          <label for="estadodt" class="form-label">Estado del credito</label>
+                                          <select class="form-control" id="estadodt" required>
+                                             <option value="Activo" id="option1">Activo</option>
+                                             <option value="Inactivo" id="option2">Inactivo</option>
+                                          </select>
+                                       </div>
+                                       <div class="col-sm">
+                                          <label for="apellidodt" class="form-label">Apellidos</label>
+                                          <input type="text" class="form-control" id="apellidodt" placeholder="Apellidos" required>
+                                          <label for="direcciondt" class="form-label">Direccion</label>
+                                          <input type="text" class="form-control" id="direcciondt" placeholder="Direccion" required>
+                                          <label for="telefonodt" class="form-label">Telefono</label>
+                                          <input type="text" class="form-control" id="telefonodt" placeholder="Telefono" required>
+                                       </div>
+                                       <div class="col-sm">
+                                          <label for="cupototaldt" class="form-label">Cupo total</label>
+                                          <input type="text" class="form-control" id="cupototaldt" placeholder="Cupo total" required>
+                                          <label for="cupodisponibledt" class="form-label">Cupo disponible</label>
+                                          <input type="text" class="form-control" id="cupodisponibledt" placeholder="Cupo disponible">
+                                          <label for="graciadt" class="form-label">Dias de gracia</label>
+                                          <input type="text" class="form-control" id="graciadt" placeholder="Dias de gracia">
+                                       </div>
+                                       <div class="modal-footer">
+                                          <button class="btn btn-primary" type="submit" id="guardar">Guardar cambios</button>
+                                       </div>
+                                    </div>
+                                 </form>
                               </div>
                            </div>
                         </div>
@@ -156,30 +193,71 @@
                </div>
             </div>
          </div>
-         <div class="container" id="creditos" style="visibility: hidden;">
-         <div class="row">
-            <div class="col-sm">
-               <div class="form-group">
-                  <label for="cupototal">Pagare Nro.</label>
-                  <input type="text" class="form-control" id="cupototal" placeholder="Numero de pagare" required>
+         <div class="container" id="creditos" style="display: none;">
+            <form onsubmit="crearcredito()">
+               <div class="row">
+                  <div class="col">
+                     <label for="pagare" class="form-label">Pagare Nro.</label>
+                     <input type="text" class="form-control" id="pagare" placeholder="numero de pagare" required>
+                  </div>
+                  <div class="col">
+                     <label for="cuotas" class="form-label">Cuotas mensuales</label>
+                     <input type="text" class="form-control" id="cuotas" placeholder="cuotas">
+                  </div>
                </div>
-               <div class="form-group">
-                  <label for="cupodisponible">Cuotas mensuales</label>
-                  <input type="text" class="form-control" id="cupodisponible" placeholder="Cuotas">
+               <div class="row">
+                  <div class="col">
+                     <label for="monto" class="form-label">Monto del credito</label>
+                     <input type="text" class="form-control" id="monto" placeholder="cantidad" required>
+                  </div>
+                  <div class="col">
+                     <label for="cedula" class="form-label">Cedula del cliente search</label>
+                     <input type="text" class="form-control" id="cedula" placeholder="cedula" required>
+                  </div>
                </div>
-            </div>
-         </div>
-         <div class="row">
-            <div class="col-sm">
-               <div class="form-group">
-                  <label for="cupodisponible">monto del credito/label>
-                  <input type="text" class="form-control" id="cupodisponible" placeholder="Cantidad" required>
+               <div class="row">
+                  <div class="col">
+                     <label for="cuota" class="form-label">Cuota inicial</label>
+                     <input type="text" class="form-control" id="cuota" placeholder="cantidad" required>
+                  </div>
+                  <div class="col">
+                     <label for="telefono" class="form-label">cliente select</label>
+                     <input type="text" class="form-control" id="telefono" placeholder="Telefono" required>
+                  </div>
                </div>
-            </div>
+               <div class="row">
+                  <div class="col">
+                     <label for="tasa" class="form-label">Tasa de interes</label>
+                     <select class="form-control" id="tasa" >
+                        <option selected disabled value="">Seleccionar...</option>
+                        <option value="10%" id="option1">10%</option>
+                        <option value="6%" id="option2">6%</option>
+                        <option value="12%" id="option2">12%</option>
+                     </select>
+                  </div>
+                  <div class="col">
+                     <label for="telefono" class="form-label">Fecha del credito</label>
+                     <input type="date" class="form-control" id="telefono" placeholder="Telefono" required>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col">
+                     <label for="telefono" class="form-label">Fecha de desembolso</label>
+                     <input type="date" class="form-control" id="telefono" placeholder="Telefono" required>
+                  </div>
+                  <div class="col" >
+                     <div class="input-group mt-3" id="observaciones">
+                        <span class="input-group-text">observaciones</span>
+                        <textarea class="form-control" aria-label="With textarea" ></textarea>
+                     </div>
+                  </div>
+               </div>
+               <button class="btn btn-primary" type="submit" id="guardar">Crear</button>
+            </form>
          </div>
       </main>
-      <footer>
-         <p  id="footer">
+      <footer id="footer">
+         <p  >
             Desarollado por: &copy Dayanna Valentina Rojas Rey
          </p>
       </footer>
